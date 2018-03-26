@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class LandingPage extends Component {
   render() {
     const backgroundTheme = {
       backgroundImage: `url("../img/hero-2.jpg")`
-    }
+    };
     return (
-      <header className="masthead text-center text-white d-flex" style={backgroundTheme} >
+      <header className="masthead text-center text-white d-flex" style={backgroundTheme}>
         <div className="container my-auto">
           <div className="row">
             <div className="col-lg-10 mx-auto">
@@ -16,13 +16,18 @@ class LandingPage extends Component {
               <hr />
             </div>
             <div className="col-lg-8 mx-auto">
-              <p className="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-              <a className="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+              <p className="text-faded mb-5">
+                Start Bootstrap can help you build better websites using the Bootstrap CSS
+                framework! Just download your template and start going, no strings attached!
+              </p>
+              <a className="btn btn-primary btn-xl js-scroll-trigger" href="#about">
+                Find Out More
+              </a>
             </div>
           </div>
         </div>
-      </header >
-    )
+      </header>
+    );
   }
 }
 

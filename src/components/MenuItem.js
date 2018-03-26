@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const MenuItem = props => {
   return (
@@ -9,7 +9,7 @@ const MenuItem = props => {
       </div>
       <p className="menu-item-description text-left text-muted">{props.description}</p>
     </div>
-  )
-}
+  );
+};
 
 export default MenuItem;
