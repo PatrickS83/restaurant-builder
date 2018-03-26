@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SectionHeader = props => {
+const SectionHeader = () => {
   return (
     <div className="section-header d-flex align-items-center flex-column">
       <h3 className="section-title">menu</h3>
