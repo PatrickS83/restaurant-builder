@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 
 class LandingPage extends Component {
   render() {
+    const backgroundTheme = {
+      backgroundImage: `url("../img/hero-2.jpg")`
+    }
     return (
-      <header className="masthead text-center text-white d-flex">
+      <header className="masthead text-center text-white d-flex" style={backgroundTheme} >
         <div className="container my-auto">
           <div className="row">
             <div className="col-lg-10 mx-auto">
@@ -18,7 +21,7 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-      </header>
+      </header >
     )
   }
 }
