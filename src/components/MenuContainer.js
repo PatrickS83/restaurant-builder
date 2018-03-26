@@ -5,7 +5,7 @@ import Menu from './Menu';
 
 class MenuContainer extends Component {
   state = {
-    activeMenu: 'breakfast',
+    activeMenu: 'breakfast'
   }
 
   handleMenuClick = (e) =>{
