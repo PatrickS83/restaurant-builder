@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
 import AboutUs from "./components/AboutUs";
 import Specialities from "./components/Specialities";
+import MenuContainer from "./components/MenuContainer";
+
 
 class App extends Component {
 
@@ -14,6 +16,7 @@ class App extends Component {
         <LandingPage />
         <AboutUs />
         <Specialities />
+        <MenuContainer />
       </React.Fragment>
     );
   }
