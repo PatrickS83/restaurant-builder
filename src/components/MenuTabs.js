@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const MenuTabs = props => {
   return (
@@ -29,6 +30,11 @@ const MenuTabs = props => {
       </button>
     </div>
   );
+};
+
+MenuTabs.propTypes = {
+  handleMenuClick: PropTypes.func.isRequired,
+  activeMenu: PropTypes.string
 };
 
 export default MenuTabs;

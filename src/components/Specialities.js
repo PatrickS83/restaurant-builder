@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import SpecialitiesImg from './SpecialitiesImg';
+import React, { Component } from "react";
+import SpecialitiesImg from "./SpecialitiesImg";
 
 class Specialities extends Component {
   state = {
@@ -20,18 +20,25 @@ class Specialities extends Component {
         src: "../img/grapes.jpg"
       }
     ]
-  }
+  };
 
   render() {
     return (
       <section className="p-0" id="portfolio">
         <div className="container-fluid p-0">
           <div className="row no-gutters popup-gallery">
-            {this.state.specials.map((special, index) => <SpecialitiesImg key={index} title={special.title} subtitle={special.subtitle} src={special.src} />)}
+            {this.state.specials.map((special, index) => (
+              <SpecialitiesImg
+                key={index}
+                title={special.title}
+                subtitle={special.subtitle}
+                src={special.src}
+              />
+            ))}
           </div>
         </div>
       </section>
-    )
+    );
   }
 }
 
