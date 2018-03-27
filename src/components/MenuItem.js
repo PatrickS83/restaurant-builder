@@ -35,7 +35,7 @@ MenuItem.propTypes = {
   activeMenu: PropTypes.string.isRequired,
   isAdmin: PropTypes.bool.isRequired,
   handleTextChange: PropTypes.func.isRequired,
-  index: PropTypes.num
+  index: PropTypes.number
 };
 
 export default MenuItem;
