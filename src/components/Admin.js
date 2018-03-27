@@ -11,36 +11,40 @@ import base from "../base";
 class Admin extends Component {
   state = {
     isAdmin: true,
-    content: {}
+    component: {}
   };
 
   componentDidMount() {
     // the ref is from firebase. Not react ref
-    this.ref = base.syncState(`/content`, {
+    this.ref = base.syncState(`/component`, {
       context: this,
-      state: "content" // which state you want to sync
+      state: "component" // which state you want to sync
     });
   }
 
   handleTextChange = (e, compName, compProperty) => {
-    const copy = { ...this.state.content };
+    const copy = { ...this.state.component };
 
     copy[compName][compProperty] = e.currentTarget.innerHTML;
-    this.setState({ content: copy });
+    this.setState({ component: copy });
   };
 
   render() {
     return (
       <React.Fragment>
-        <Navbar />
+        <Navbar
+          isAdmin={this.state.isAdmin}
+          data={{ ...this.state.component.Navbar }}
+          handleTextChange={this.handleTextChange}
+        />
         <LandingPage
           isAdmin={this.state.isAdmin}
-          data={{ ...this.state.content.LandingPage }}
+          data={{ ...this.state.component.LandingPage }}
           handleTextChange={this.handleTextChange}
         />
         <AboutUs
           isAdmin={this.state.isAdmin}
-          data={{ ...this.state.content.AboutUs }}
+          data={{ ...this.state.component.AboutUs }}
           handleTextChange={this.handleTextChange}
         />
         <Specialities />
