@@ -4,7 +4,7 @@ import ContentEditable from "react-contenteditable";
 
 const MenuItem = props => {
   return (
-    <div className="card col-sm-6 pt-2">
+    <div className="card col-sm-6 pt-2 bg-light">
       <div className="d-flex justify-content-between">
         <ContentEditable
           className="menu-item-name"
