@@ -22,10 +22,13 @@ class Admin extends Component {
     });
   }
 
-  handleTextChange = (e, compName, compProperty) => {
+  handleTextChange = (e, compName, compProperty, optProp = null) => {
     const copy = { ...this.state.component };
-
-    copy[compName][compProperty] = e.currentTarget.innerHTML;
+    if (!optProp) {
+      copy[compName][compProperty] = e.currentTarget.innerHTML;
+    } else {
+      copy[compName][compProperty][e.currentTarget.id][optProp] = e.currentTarget.innerHTML;
+    }
     this.setState({ component: copy });
   };
 
@@ -48,7 +51,11 @@ class Admin extends Component {
           handleTextChange={this.handleTextChange}
         />
         <Specialities />
-        <MenuContainer />
+        <MenuContainer
+          isAdmin={this.state.isAdmin}
+          data={{ ...this.state.component.Menu }}
+          handleTextChange={this.handleTextChange}
+        />
         <Footer />
       </React.Fragment>
     );
