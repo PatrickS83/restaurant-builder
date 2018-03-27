@@ -8,22 +8,29 @@ const MenuItem = props => {
       <div className="d-flex justify-content-between">
         <ContentEditable
           className="menu-item-name"
-          html={props.name} // innerHTML of the editable div
-          disabled={!props.isAdmin} // use true to disable edition
-          onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "name")} // handle innerHTML change
+          html={props.name}
+          disabled={!props.isAdmin}
+          onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "name")}
           tagName={"h4"}
           id={props.index}
         />
         <ContentEditable
           className="menu-item-price"
-          html={props.price} // innerHTML of the editable div
-          disabled={!props.isAdmin} // use true to disable edition
-          onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "price")} // handle innerHTML change
+          html={props.price}
+          disabled={!props.isAdmin}
+          onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "price")}
           tagName={"h4"}
           id={props.index}
         />
       </div>
-      <p className="menu-item-description text-left text-muted">{props.description}</p>
+      <ContentEditable
+        className="menu-item-description text-left text-muted"
+        html={props.description}
+        disabled={!props.isAdmin}
+        onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "description")}
+        tagName={"p"}
+        id={props.index}
+      />
     </div>
   );
 };
