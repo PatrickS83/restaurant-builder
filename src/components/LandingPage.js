@@ -3,6 +3,16 @@ import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
 
 class LandingPage extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      title: PropTypes.string,
+      message: PropTypes.string,
+      button: PropTypes.string
+    }),
+    isAdmin: PropTypes.bool,
+    handleTextChange: PropTypes.func
+  };
+
   render() {
     const backgroundTheme = {
       backgroundImage: `url("../img/hero-2.jpg")`
