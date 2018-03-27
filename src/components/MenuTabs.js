@@ -8,7 +8,7 @@ const MenuTabs = props => {
         type="button"
         onClick={props.handleMenuClick}
         id="breakfast"
-        className={`btn btn-secondary ${props.activeMenu === "breakfast" ? "active" : ""}`}
+        className={"btn btn-secondary " + (props.activeMenu === "breakfast" ? "active" : "")}
       >
         Breakfast
       </button>
@@ -16,7 +16,7 @@ const MenuTabs = props => {
         type="button"
         onClick={props.handleMenuClick}
         id="lunch"
-        className={`btn btn-secondary ${props.activeMenu === "lunch" ? "active" : ""}`}
+        className={"btn btn-secondary " + (props.activeMenu === "lunch" ? "active" : "")}
       >
         Lunch
       </button>
@@ -24,7 +24,7 @@ const MenuTabs = props => {
         type="button"
         onClick={props.handleMenuClick}
         id="dinner"
-        className={`btn btn-secondary ${props.activeMenu === "dinner" ? "active" : ""}`}
+        className={"btn btn-secondary " + (props.activeMenu === "dinner" ? "active" : "")}
       >
         Dinner
       </button>
