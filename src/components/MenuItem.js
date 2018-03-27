@@ -14,14 +14,17 @@ const MenuItem = props => {
           tagName={"h4"}
           id={props.index}
         />
-        <ContentEditable
-          className="menu-item-price"
-          html={props.price}
-          disabled={!props.isAdmin}
-          onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "price")}
-          tagName={"h4"}
-          id={props.index}
-        />
+        <span className="d-flex">
+          <ContentEditable
+            className="menu-item-price"
+            html={props.price}
+            disabled={!props.isAdmin}
+            onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "price")}
+            tagName={"h4"}
+            id={props.index}
+          />
+          <h4>€</h4>
+        </span>
       </div>
       <ContentEditable
         className="menu-item-description text-left text-muted"
