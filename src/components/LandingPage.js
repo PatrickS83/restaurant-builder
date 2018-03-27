@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import ContentEditable from "react-contenteditable";
 
 class LandingPage extends Component {
   render() {
@@ -10,19 +12,32 @@ class LandingPage extends Component {
         <div className="container my-auto">
           <div className="row">
             <div className="col-lg-10 mx-auto">
-              <h1 className="text-uppercase">
-                <strong>Your Favorite Source of Free Bootstrap Themes</strong>
-              </h1>
+              <ContentEditable
+                className="text-uppercase"
+                html={this.props.data.title} // innerHTML of the editable div
+                disabled={!this.props.isAdmin} // use true to disable edition
+                onChange={e => this.props.handleTextChange(e, "LandingPage", "title")} // handle innerHTML change
+                tagName={"h1"}
+              />
               <hr />
             </div>
             <div className="col-lg-8 mx-auto">
-              <p className="text-faded mb-5">
-                Start Bootstrap can help you build better websites using the Bootstrap CSS
-                framework! Just download your template and start going, no strings attached!
-              </p>
-              <a className="btn btn-primary btn-xl js-scroll-trigger" href="#about">
-                Find Out More
-              </a>
+              <ContentEditable
+                className="text-faded mb-5"
+                html={this.props.data.message} // innerHTML of the editable div
+                disabled={!this.props.isAdmin} // use true to disable edition
+                onChange={e => this.props.handleTextChange(e, "LandingPage", "message")} // handle innerHTML change
+                tagName={"p"}
+              />
+
+              <ContentEditable
+                className="btn btn-primary btn-xl js-scroll-trigger"
+                href="#about"
+                html={this.props.data.button} // innerHTML of the editable div
+                disabled={!this.props.isAdmin} // use true to disable edition
+                onChange={e => this.props.handleTextChange(e, "LandingPage", "button")} // handle innerHTML change
+                tagName={"a"}
+              />
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ class Admin extends Component {
 
   handleTextChange = (e, compName, compProperty) => {
     const copy = { ...this.state.content };
-    console.log(copy);
+
     copy[compName][compProperty] = e.currentTarget.innerHTML;
     this.setState({ content: copy });
   };
@@ -33,7 +33,11 @@ class Admin extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <LandingPage />
+        <LandingPage
+          isAdmin={this.state.isAdmin}
+          data={{ ...this.state.content.LandingPage }}
+          handleTextChange={this.handleTextChange}
+        />
         <AboutUs
           isAdmin={this.state.isAdmin}
           data={{ ...this.state.content.AboutUs }}

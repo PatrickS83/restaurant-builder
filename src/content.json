@@ -3,6 +3,11 @@
     "AboutUs": {
       "title": "This is a title",
       "message": "This is the messages text. This restaurant is very nice! Please buy more!"
+    },
+    "LandingPage": {
+      "title": "Restaurant Title",
+      "message": "This is the messages text. This restaurant is very nice! Please buy more!",
+      "button": "Button text"
     }
   }
 }
