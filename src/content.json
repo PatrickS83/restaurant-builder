@@ -16,7 +16,11 @@
       "link2": "services",
       "link3":"menu",
       "link4":"contact"
-
+    },
+    "MenuHeader": {
+      "title": "Menu",
+      "slogan": "- our delicious recipes -",
+      "message": "Everything is made fresh everyday!"
     },
 
     "Menu":{
@@ -68,10 +72,7 @@
           "price": "433",
           "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quasi amet vel aspernatur numquam corrupti! Quod fuga quaerat"
         }
-
       ]
-
-
     }
   }
 }

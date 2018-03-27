@@ -53,7 +53,7 @@ class Admin extends Component {
         <Specialities />
         <MenuContainer
           isAdmin={this.state.isAdmin}
-          data={{ ...this.state.component.Menu }}
+          data={{ ...this.state.component.Menu, ...this.state.component.MenuHeader }}
           handleTextChange={this.handleTextChange}
         />
         <Footer />

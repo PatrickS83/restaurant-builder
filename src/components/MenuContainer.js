@@ -22,12 +22,16 @@ class MenuContainer extends Component {
   render() {
     return (
       <section className="menu-container container">
-        <SectionHeader />
+        <SectionHeader
+          data={this.props.data}
+          isAdmin={this.props.isAdmin}
+          handleTextChange={this.props.handleTextChange}
+        />
         <MenuTabs handleMenuClick={this.handleMenuClick} activeMenu={this.state.activeMenu} />
         <Menu
           activeMenu={this.state.activeMenu}
           isAdmin={this.props.isAdmin}
-          data={{ ...this.props.data }}
+          data={this.props.data}
           handleTextChange={this.props.handleTextChange}
         />
       </section>
