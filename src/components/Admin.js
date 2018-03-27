@@ -6,21 +6,27 @@ import AboutUs from "./AboutUs";
 import Specialities from "./Specialities";
 import MenuContainer from "./MenuContainer";
 import Footer from "./Footer";
+import base from "../base";
 
 class Admin extends Component {
   state = {
     isAdmin: true,
-    AboutUs: {
-      title: "This is a title",
-      message: "This is the messages text. This restaurant is very nice! Please buy more!"
-    }
+    content: {}
   };
 
+  componentDidMount() {
+    // the ref is from firebase. Not react ref
+    this.ref = base.syncState(`/content`, {
+      context: this,
+      state: "content" // which state you want to sync
+    });
+  }
+
   handleTextChange = (e, compName, compProperty) => {
-    const copy = { ...this.state[compName] };
-    copy[compProperty] = e.currentTarget.innerHTML;
+    const copy = { ...this.state.content };
     console.log(copy);
-    this.setState({ [compName]: copy });
+    copy[compName][compProperty] = e.currentTarget.innerHTML;
+    this.setState({ content: copy });
   };
 
   render() {
@@ -30,7 +36,7 @@ class Admin extends Component {
         <LandingPage />
         <AboutUs
           isAdmin={this.state.isAdmin}
-          data={{ ...this.state.AboutUs }}
+          data={{ ...this.state.content.AboutUs }}
           handleTextChange={this.handleTextChange}
         />
         <Specialities />
