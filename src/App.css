@@ -310,3 +310,17 @@ header.masthead p {
 .btn-primary:active, .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+.selectImage {
+  padding: 0 !important;
+  margin: 0 !important;
+  transform: scale3d(1, 1, 1);
+  transition: transform 0.3s
+}
+
+.selectImage:hover {
+  transform: scale3d(1.5, 1.5, 1);
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 99;
+}
