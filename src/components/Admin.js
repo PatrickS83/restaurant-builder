@@ -23,13 +23,47 @@ class Admin extends Component {
   }
 
   handleTextChange = (e, compName, compProperty, optProp = null) => {
-    const copy = { ...this.state.component };
+    const componentCopy = { ...this.state.component };
+    const element = e.currentTarget;
     if (!optProp) {
-      copy[compName][compProperty] = e.currentTarget.innerHTML;
+      componentCopy[compName][compProperty] = element.innerHTML;
     } else {
-      copy[compName][compProperty][e.currentTarget.id][optProp] = e.currentTarget.innerHTML;
+      componentCopy[compName][compProperty][element.dataset.index][optProp] = element.innerHTML;
     }
-    this.setState({ component: copy });
+    this.setState({ component: componentCopy });
+  };
+
+  addMenuItem = (menuItem, activeMenu) => {
+    const componentCopy = { ...this.state.component };
+    let menuArray = componentCopy.Menu[activeMenu];
+    //firebase erases the property if menuArray.length === 0, so we set a new array for this case
+    menuArray ? menuArray.push(menuItem) : (menuArray = []);
+    this.setState({ component: componentCopy });
+  };
+
+  removeMenuItem = (activeMenu, index) => {
+    const componentCopy = { ...this.state.component };
+    componentCopy.Menu[activeMenu].splice(index, 1);
+    console.log(componentCopy.Menu);
+
+    this.setState({ component: componentCopy });
+  };
+
+  moveMenuItem = (activeMenu, index, direction) => {
+    const componentCopy = { ...this.state.component };
+    const menuArray = componentCopy.Menu[activeMenu];
+
+    if (direction === "moveLeft") {
+      if (index === 0) return;
+      const removedItem = menuArray.splice(index, 1);
+      menuArray.splice(index - 1, 0, ...removedItem);
+    } else if (direction === "moveRight") {
+      if (index === menuArray.length - 1) return;
+      const removedItem = menuArray.splice(index, 1);
+      menuArray.splice(index + 1, 0, ...removedItem);
+    }
+
+    this.setState({ component: componentCopy });
   };
 
   render() {
@@ -55,6 +89,9 @@ class Admin extends Component {
           isAdmin={this.state.isAdmin}
           data={{ ...this.state.component.Menu, ...this.state.component.MenuHeader }}
           handleTextChange={this.handleTextChange}
+          addMenuItem={this.addMenuItem}
+          removeMenuItem={this.removeMenuItem}
+          moveMenuItem={this.moveMenuItem}
         />
         <Footer />
       </React.Fragment>
