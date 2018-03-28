@@ -15,6 +15,7 @@ class MenuContainer extends Component {
     activeMenu: "breakfast"
   };
 
+  // set the active menu on menutab click
   handleMenuClick = e => {
     this.setState({ activeMenu: e.target.id });
   };
@@ -33,6 +34,9 @@ class MenuContainer extends Component {
           isAdmin={this.props.isAdmin}
           data={this.props.data}
           handleTextChange={this.props.handleTextChange}
+          addMenuItem={this.props.addMenuItem}
+          removeMenuItem={this.props.removeMenuItem}
+          moveMenuItem={this.props.moveMenuItem}
         />
       </section>
     );

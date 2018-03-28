@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
 
 const MenuItem = props => {
+  const confirmRemove = () => {
+    const eraseItemOrNot = window.confirm("do you really want to remove the Item?");
+    if (eraseItemOrNot) {
+      props.removeMenuItem(props.activeMenu, props.index);
+    }
+  };
   return (
     <div className="card col-sm-6 pt-2 bg-light">
       <div className="d-flex justify-content-between">
@@ -12,7 +18,7 @@ const MenuItem = props => {
           disabled={!props.isAdmin}
           onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "name")}
           tagName={"h4"}
-          id={props.index}
+          data-index={props.index}
         />
         <span className="d-flex">
           <ContentEditable
@@ -21,7 +27,7 @@ const MenuItem = props => {
             disabled={!props.isAdmin}
             onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "price")}
             tagName={"h4"}
-            id={props.index}
+            data-index={props.index}
           />
           <h4>€</h4>
         </span>
@@ -32,8 +38,24 @@ const MenuItem = props => {
         disabled={!props.isAdmin}
         onChange={e => props.handleTextChange(e, "Menu", props.activeMenu, "description")}
         tagName={"p"}
-        id={props.index}
+        data-index={props.index}
       />
+      {props.isAdmin ? (
+        <div className="text-right">
+          {props.index ? (
+            <span onClick={() => props.moveMenuItem(props.activeMenu, props.index, "moveLeft")}>
+              <i className="fas fa-arrow-left  mr-3" style={{ cursor: "pointer" }} />
+            </span>
+          ) : null}
+          <span onClick={() => props.moveMenuItem(props.activeMenu, props.index, "moveRight")}>
+            <i className="fas fa-arrow-right  mr-3" style={{ cursor: "pointer" }} />
+          </span>
+
+          <span onClick={confirmRemove}>
+            <i className="far fa-trash-alt" style={{ cursor: "pointer" }} />
+          </span>
+        </div>
+      ) : null}
     </div>
   );
 };
