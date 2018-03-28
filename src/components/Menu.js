@@ -7,6 +7,9 @@ class Menu extends React.Component {
     activeMenu: PropTypes.string.isRequired,
     isAdmin: PropTypes.bool.isRequired,
     handleTextChange: PropTypes.func,
+    addMenuItem: PropTypes.func,
+    removeMenuItem: PropTypes.func,
+    moveMenuItem: PropTypes.func,
     data: PropTypes.object
   };
 
@@ -21,26 +24,28 @@ class Menu extends React.Component {
   };
 
   render() {
+    const { data, activeMenu, isAdmin } = this.props;
+
     return (
       <div className="container">
         <div className="row text-center">
-          {this.props.data[this.props.activeMenu]
-            ? this.props.data[this.props.activeMenu].map((dish, index) => (
+          {data[activeMenu]
+            ? data[activeMenu].map((dish, index) => (
                 <MenuItem
                   key={index}
                   index={index}
                   name={dish.name}
                   price={dish.price}
                   description={dish.description}
-                  isAdmin={this.props.isAdmin}
+                  isAdmin={isAdmin}
                   handleTextChange={this.props.handleTextChange}
-                  activeMenu={this.props.activeMenu}
+                  activeMenu={activeMenu}
                   removeMenuItem={this.props.removeMenuItem}
                   moveMenuItem={this.props.moveMenuItem}
                 />
               ))
             : null}
-          {this.props.isAdmin ? (
+          {isAdmin ? (
             <button className="btn btn-light col-sm-6" onClick={this.createMenuItem}>
               Add menu item
             </button>

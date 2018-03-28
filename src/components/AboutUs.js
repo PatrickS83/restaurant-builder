@@ -10,19 +10,17 @@ const AboutUs = props => {
           <div className="col-lg-8 mx-auto text-center">
             <ContentEditable
               className="section-heading text-white"
-              html={props.data.title} // innerHTML of the editable div
-              disabled={!props.isAdmin} // use true to disable edition
-              onChange={e => props.handleTextChange(e, "AboutUs", "title")} // handle innerHTML change
+              html={props.data.title}
+              disabled={!props.isAdmin}
+              onChange={e => props.handleTextChange(e, "AboutUs", "title")}
               tagName={"h2"}
             />
-
             <hr className="light my-4" />
-
             <ContentEditable
               className="text-faded mb-4"
-              html={props.data.message} // innerHTML of the editable div
-              disabled={!props.isAdmin} // use true to disable edition
-              onChange={e => props.handleTextChange(e, "AboutUs", "message")} // handle innerHTML change
+              html={props.data.message}
+              disabled={!props.isAdmin}
+              onChange={e => props.handleTextChange(e, "AboutUs", "message")}
               tagName={"p"}
             />
           </div>

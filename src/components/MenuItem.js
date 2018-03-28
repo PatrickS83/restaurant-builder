@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
 
 const MenuItem = props => {
-  const confirmRemove = () => {
+  function confirmRemove() {
     const eraseItemOrNot = window.confirm("do you really want to remove the Item?");
     if (eraseItemOrNot) {
       props.removeMenuItem(props.activeMenu, props.index);
     }
-  };
+  }
+
   return (
     <div className="card col-sm-6 pt-2 bg-light">
       <div className="d-flex justify-content-between">
@@ -67,6 +68,8 @@ MenuItem.propTypes = {
   activeMenu: PropTypes.string.isRequired,
   isAdmin: PropTypes.bool.isRequired,
   handleTextChange: PropTypes.func.isRequired,
+  moveMenuItem: PropTypes.func.isRequired,
+  removeMenuItem: PropTypes.func.isRequired,
   index: PropTypes.number
 };
 

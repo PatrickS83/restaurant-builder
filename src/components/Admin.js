@@ -44,8 +44,6 @@ class Admin extends Component {
   removeMenuItem = (activeMenu, index) => {
     const componentCopy = { ...this.state.component };
     componentCopy.Menu[activeMenu].splice(index, 1);
-    console.log(componentCopy.Menu);
-
     this.setState({ component: componentCopy });
   };
 

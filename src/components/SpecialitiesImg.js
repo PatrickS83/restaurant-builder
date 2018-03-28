@@ -5,7 +5,9 @@ class SpecialitiesImg extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
+    src: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    imgIsEditable: PropTypes.func
   };
 
   handleClick = () => {

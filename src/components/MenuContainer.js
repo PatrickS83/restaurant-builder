@@ -8,7 +8,10 @@ class MenuContainer extends Component {
   static propTypes = {
     isAdmin: PropTypes.bool.isRequired,
     handleTextChange: PropTypes.func.isRequired,
-    data: PropTypes.object
+    data: PropTypes.object,
+    addMenuItem: PropTypes.func,
+    removeMenuItem: PropTypes.func,
+    moveMenuItem: PropTypes.func
   };
 
   state = {
