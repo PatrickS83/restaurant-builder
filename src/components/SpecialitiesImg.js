@@ -8,18 +8,25 @@ class SpecialitiesImg extends Component {
     src: PropTypes.string.isRequired
   };
 
+  handleClick = () => {
+    this.props.imgIsEditable(this.props.index);
+  };
+
   render() {
     return (
       <div className="col-lg-4 col-sm-6">
-        <a className="portfolio-box" href="">
+        <div className="portfolio-box">
           <img className="img-fluid" src={this.props.src} alt="" />
           <div className="portfolio-box-caption">
+            <button className="btn btn-secondary" onClick={this.handleClick}>
+              Edit Image
+            </button>
             <div className="portfolio-box-caption-content">
               <div className="project-category text-faded">{this.props.title}</div>
               <div className="project-name">{this.props.subtitle}</div>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     );
   }
