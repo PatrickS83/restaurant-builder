@@ -7,6 +7,7 @@ import AboutUs from "./AboutUs";
 import Specialities from "./Specialities";
 import MenuContainer from "./MenuContainer";
 import Footer from "./Footer";
+
 import base from "../base";
 
 class Admin extends Component {
@@ -31,6 +32,10 @@ class Admin extends Component {
       context: this,
       state: "component" // which state you want to sync
     });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   handleTextChange = (e, compName, compProperty, optProp = null) => {
@@ -96,7 +101,7 @@ class Admin extends Component {
           data={{ ...this.state.component.AboutUs }}
           handleTextChange={this.handleTextChange}
         />
-        <Specialities isAdmin={this.state.isAdmin} />
+        <Specialities isAdmin={this.state.isAdmin} data={[...this.state.component.Specialities]} />
         <MenuContainer
           isAdmin={this.state.isAdmin}
           data={{ ...this.state.component.Menu, ...this.state.component.MenuHeader }}
@@ -105,6 +110,7 @@ class Admin extends Component {
           removeMenuItem={this.removeMenuItem}
           moveMenuItem={this.moveMenuItem}
         />
+        {/* <Map /> ADD LATER */}
         <Footer />
       </React.Fragment>
     ) : null;
