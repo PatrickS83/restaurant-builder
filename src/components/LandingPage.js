@@ -22,6 +22,11 @@ class LandingPage extends Component {
         <div className="container my-auto">
           <div className="row">
             <div className="col-lg-10 mx-auto">
+              {this.props.isAdmin ? (
+                <div className="alert alert-success align-self-start mb-5" role="alert">
+                  Login successfull! You can now edit this webpage. Try it out!
+                </div>
+              ) : null}
               <ContentEditable
                 className="text-uppercase"
                 html={this.props.data.title} // innerHTML of the editable div

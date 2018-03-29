@@ -42,12 +42,19 @@ class Menu extends React.Component {
                   activeMenu={activeMenu}
                   removeMenuItem={this.props.removeMenuItem}
                   moveMenuItem={this.props.moveMenuItem}
+                  lastMenuItem={data[activeMenu].length - 1}
                 />
               ))
             : null}
           {isAdmin ? (
-            <button className="btn btn-light col-sm-6" onClick={this.createMenuItem}>
-              Add menu item
+            <button
+              className="btn btn-light col-sm-6 d-flex align-items-center justify-content-center"
+              onClick={this.createMenuItem}
+              style={{ minHeight: "125px", fontSize: "1.5rem" }}
+            >
+              <span>Add</span>
+              <i className="fas fa-plus fa-3x p-2" />
+              <span>Dish</span>
             </button>
           ) : null}
         </div>

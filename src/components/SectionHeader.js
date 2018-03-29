@@ -4,7 +4,7 @@ import ContentEditable from "react-contenteditable";
 
 const SectionHeader = props => {
   return (
-    <div className="section-header d-flex align-items-center flex-column">
+    <div className="section-header d-flex align-items-center flex-column mb-5">
       <ContentEditable
         className="section-title"
         href="#page-top"

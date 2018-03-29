@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "../App.css";
 import Navbar from "./Navbar";
 import LandingPage from "./LandingPage";
@@ -9,12 +10,22 @@ import Footer from "./Footer";
 import base from "../base";
 
 class Admin extends Component {
+  static propTypes = {
+    history: PropTypes.object
+  };
+
   state = {
-    isAdmin: true,
+    isAdmin: false,
     component: {}
   };
 
   componentDidMount() {
+    if (this.props.history.location.pathname === "/admin") {
+      this.setState({ isAdmin: true });
+    } else {
+      this.setState({ isAdmin: false });
+    }
+
     // the ref is from firebase. Not react ref
     this.ref = base.syncState(`/component`, {
       context: this,
@@ -51,13 +62,16 @@ class Admin extends Component {
     const componentCopy = { ...this.state.component };
     const menuArray = componentCopy.Menu[activeMenu];
 
+    // checking if item can't be moved any further
+    const stopFirstItem = index === 0 && direction === "moveLeft";
+    const stopLastItem = index === menuArray.length - 1 && direction === "moveRight";
+    if (stopFirstItem || stopLastItem) return;
+
+    // move item in specified direction after previous check is passed
+    const removedItem = menuArray.splice(index, 1);
     if (direction === "moveLeft") {
-      if (index === 0) return;
-      const removedItem = menuArray.splice(index, 1);
       menuArray.splice(index - 1, 0, ...removedItem);
     } else if (direction === "moveRight") {
-      if (index === menuArray.length - 1) return;
-      const removedItem = menuArray.splice(index, 1);
       menuArray.splice(index + 1, 0, ...removedItem);
     }
 
@@ -65,7 +79,7 @@ class Admin extends Component {
   };
 
   render() {
-    return (
+    return this.state.component.LandingPage ? (
       <React.Fragment>
         <Navbar
           isAdmin={this.state.isAdmin}
@@ -82,7 +96,7 @@ class Admin extends Component {
           data={{ ...this.state.component.AboutUs }}
           handleTextChange={this.handleTextChange}
         />
-        <Specialities />
+        <Specialities isAdmin={this.state.isAdmin} />
         <MenuContainer
           isAdmin={this.state.isAdmin}
           data={{ ...this.state.component.Menu, ...this.state.component.MenuHeader }}
@@ -93,7 +107,7 @@ class Admin extends Component {
         />
         <Footer />
       </React.Fragment>
-    );
+    ) : null;
   }
 }
 

@@ -11,7 +11,7 @@ const MenuItem = props => {
   }
 
   return (
-    <div className="card col-sm-6 pt-2 bg-light">
+    <div className="card col-sm-6 pt-2 bg-light menu-item">
       <div className="d-flex justify-content-between">
         <ContentEditable
           className="menu-item-name"
@@ -42,18 +42,25 @@ const MenuItem = props => {
         data-index={props.index}
       />
       {props.isAdmin ? (
-        <div className="text-right">
+        <div className="text-right" style={{ fontSize: "1.5rem" }}>
           {props.index ? (
             <span onClick={() => props.moveMenuItem(props.activeMenu, props.index, "moveLeft")}>
-              <i className="fas fa-arrow-left  mr-3" style={{ cursor: "pointer" }} />
+              <i
+                className="fas fa-arrow-left mr-3 text-secondary hvr-pulse"
+                style={{ cursor: "pointer" }}
+              />
             </span>
           ) : null}
-          <span onClick={() => props.moveMenuItem(props.activeMenu, props.index, "moveRight")}>
-            <i className="fas fa-arrow-right  mr-3" style={{ cursor: "pointer" }} />
-          </span>
-
+          {props.index !== props.lastMenuItem ? (
+            <span onClick={() => props.moveMenuItem(props.activeMenu, props.index, "moveRight")}>
+              <i
+                className="fas fa-arrow-right mr-3 text-secondary hvr-pulse"
+                style={{ cursor: "pointer" }}
+              />
+            </span>
+          ) : null}
           <span onClick={confirmRemove}>
-            <i className="far fa-trash-alt" style={{ cursor: "pointer" }} />
+            <i className="far fa-trash-alt hvr-pulse text-danger" style={{ cursor: "pointer" }} />
           </span>
         </div>
       ) : null}
@@ -70,7 +77,8 @@ MenuItem.propTypes = {
   handleTextChange: PropTypes.func.isRequired,
   moveMenuItem: PropTypes.func.isRequired,
   removeMenuItem: PropTypes.func.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number.isRequired,
+  lastMenuItem: PropTypes.number.isRequired
 };
 
 export default MenuItem;

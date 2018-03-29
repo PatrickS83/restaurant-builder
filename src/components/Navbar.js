@@ -15,7 +15,31 @@ class Navbar extends Component {
     handleTextChange: PropTypes.func
   };
 
+  state = {
+    loggingIn: false
+  };
+
+  mockLogin = () => {
+    this.setState({ loggingIn: true });
+    // mock authorization wait
+    setTimeout(() => {
+      //this.setState({ loggingIn: false });
+      this.props.isAdmin ? window.location.replace("/") : window.location.replace("/admin");
+    }, 1000);
+  };
+
   render() {
+    const mockLoginButton = !this.state.loggingIn ? (
+      <button className={"nav-item btn btn-primary ml-5"} onClick={this.mockLogin}>
+        {this.props.isAdmin ? "Log off as Admin" : "Log in as Admin"}
+      </button>
+    ) : (
+      <li className={"nav-link ml-5 text-primary"}>
+        <i className="fas fa-spinner" />{" "}
+        <span>{this.props.isAdmin ? "Logging off ..." : "Logging in ..."}</span>
+      </li>
+    );
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div className="container">
@@ -27,6 +51,8 @@ class Navbar extends Component {
             onChange={e => this.props.handleTextChange(e, "Navbar", "logoText")}
             tagName={"a"}
           />
+          {/* {!this.props.isAdmin ? mockLoginButton : null} */}
+          {mockLoginButton}
           <button
             className="navbar-toggler navbar-toggler-right"
             type="button"

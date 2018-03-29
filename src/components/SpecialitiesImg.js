@@ -7,7 +7,8 @@ class SpecialitiesImg extends Component {
     subtitle: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     index: PropTypes.number.isRequired,
-    imgIsEditable: PropTypes.func
+    imgIsEditable: PropTypes.func,
+    isAdmin: PropTypes.bool.isRequired
   };
 
   handleClick = () => {
@@ -20,9 +21,11 @@ class SpecialitiesImg extends Component {
         <div className="portfolio-box">
           <img className="img-fluid" src={this.props.src} alt="" />
           <div className="portfolio-box-caption">
-            <button className="btn btn-secondary" onClick={this.handleClick}>
-              Edit Image
-            </button>
+            {this.props.isAdmin ? (
+              <button className="btn btn-secondary" onClick={this.handleClick}>
+                Edit Image
+              </button>
+            ) : null}
             <div className="portfolio-box-caption-content">
               <div className="project-category text-faded">{this.props.title}</div>
               <div className="project-name">{this.props.subtitle}</div>
