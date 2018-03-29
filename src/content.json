@@ -7,7 +7,8 @@
     "LandingPage": {
       "title": "Restaurant Title",
       "message": "This is the messages text. This restaurant is very nice! Please buy more!",
-      "button": "Button text"
+      "button": "Button text",
+      "backgroundImgSrc": "../img/hero-2.jpg"
     },
     "Navbar":{
       "logoText":"Restaurant name",
@@ -22,6 +23,39 @@
       "slogan": "- our delicious recipes -",
       "message": "Everything is made fresh everyday!"
     },
+
+    "Specialities": [
+      {
+        "title": "Greens",
+        "subtitle": "Delicious Greens",
+        "src": "../img/greens.jpg",
+        "editable": false
+      },
+      {
+        "title": "Vegs",
+        "subtitle": "Delicious Vegs",
+        "src": "../img/vegetables.jpg",
+        "editable": false
+      },
+      {
+        "title": "Grapes",
+        "subtitle": "Delicious Grapes",
+        "src": "../img/grapes.jpg",
+        "editable": false
+      }
+    ],
+
+    "SpecialitiesImgSrc" : [
+    "../img/greens.jpg",
+    "../img/vegetables.jpg",
+    "../img/grapes.jpg",
+    "../img/eating-salad.jpg",
+    "../img/food-salad-healthy-colorful.jpg",
+    "../img/granos.jpg",
+    "../img/sanduches.jpg",
+    "../img/plato-frutas.png",
+    "../img/vegetales-canasta.jpg"
+  ],
 
     "Menu":{
       "breakfast": [
@@ -74,5 +108,6 @@
         }
       ]
     }
+
   }
 }
