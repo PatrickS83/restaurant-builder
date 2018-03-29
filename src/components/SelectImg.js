@@ -1,8 +1,7 @@
 import React from "react";
-import imgSrc from "../imgDatabase.js";
 
 const SelectImg = props => {
-  return imgSrc.map((img, index) => (
+  return props.src.map((img, index) => (
     <img
       key={index}
       className="img-fluid col-4 selectImage"

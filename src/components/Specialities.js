@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import base from "../base";
 import PropTypes from "prop-types";
 import SpecialitiesImg from "./SpecialitiesImg";
 import SelectImg from "./SelectImg";
@@ -9,45 +10,45 @@ class Specialities extends Component {
   };
 
   state = {
-    specials: [
-      {
-        title: "Greens",
-        subtitle: "Delicious Greens",
-        src: "../img/greens.jpg",
-        editable: false
-      },
-      {
-        title: "Vegs",
-        subtitle: "Delicious Vegs",
-        src: "../img/vegetables.jpeg",
-        editable: false
-      },
-      {
-        title: "Grapes",
-        subtitle: "Delicious Grapes",
-        src: "../img/grapes.jpg",
-        editable: false
-      }
-    ]
+    Specialities: [],
+    SpecialitiesImgSrc: []
   };
 
+  componentDidMount() {
+    this.ref = base.syncState(`/component/Specialities`, {
+      context: this,
+      state: "Specialities", // which state you want to sync
+      isArray: true
+    });
+    this.ref = base.syncState(`/component/SpecialitiesImgSrc`, {
+      context: this,
+      state: "SpecialitiesImgSrc", // which state you want to sync
+      isArray: true
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
   imgIsEditable = index => {
-    if (this.state.specials.find(special => special.editable)) return;
-    const specials = [...this.state.specials];
-    specials[index].editable = true;
-    this.setState({ specials });
+    if (this.state.Specialities.find(special => special.editable)) return;
+    const Specialities = [...this.state.Specialities];
+    Specialities[index].editable = true;
+    this.setState({ Specialities });
   };
 
   selectNewImg = img => {
-    const specials = [...this.state.specials];
-    const editableSpecial = specials.find(special => special.editable);
+    const Specialities = [...this.state.Specialities];
+    const editableSpecial = Specialities.find(special => special.editable);
     editableSpecial.src = img;
     editableSpecial.editable = false;
-    this.setState({ specials });
+    this.setState({ Specialities });
   };
 
   renderSpecialities = () => {
-    return this.state.specials.map(
+    if (this.state.Specialities.length === 0) return null;
+    return this.state.Specialities.map(
       (special, index) =>
         !special.editable ? (
           <SpecialitiesImg
@@ -61,7 +62,7 @@ class Specialities extends Component {
           />
         ) : (
           <div key={index} className="col-lg-4 col-sm-6">
-            <SelectImg selectNewImg={this.selectNewImg} />
+            <SelectImg selectNewImg={this.selectNewImg} src={this.state.SpecialitiesImgSrc} />
           </div>
         )
     );
