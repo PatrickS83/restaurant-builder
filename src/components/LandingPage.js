@@ -15,7 +15,7 @@ class LandingPage extends Component {
 
   render() {
     const backgroundTheme = {
-      backgroundImage: `url("../img/hero-2.jpg")`
+      backgroundImage: `url(${this.props.data.backgroundImgSrc})`
     };
     return (
       <header className="masthead text-center text-white d-flex" style={backgroundTheme}>
