@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import SectionHeader from "./SectionHeader";
-import MenuTabs from "./MenuTabs";
-import Menu from "./Menu";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import SectionHeader from './SectionHeader';
+import MenuTabs from './MenuTabs';
+import Menu from './Menu';
 
 class MenuContainer extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class MenuContainer extends Component {
   };
 
   state = {
-    activeMenu: "breakfast"
+    activeMenu: 'breakfast'
   };
 
   // set the active menu on menutab click
@@ -25,7 +25,7 @@ class MenuContainer extends Component {
 
   render() {
     return (
-      <section className="menu-container container">
+      <section className="menu-container container" id="menu">
         <SectionHeader
           data={this.props.data}
           isAdmin={this.props.isAdmin}
