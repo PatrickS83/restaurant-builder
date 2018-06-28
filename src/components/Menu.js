@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import MenuItem from "./MenuItem";
+import React from 'react';
+import PropTypes from 'prop-types';
+import MenuItem from './MenuItem';
 
 class Menu extends React.Component {
   static propTypes = {
@@ -15,10 +15,10 @@ class Menu extends React.Component {
 
   createMenuItem = () => {
     const menuItem = {
-      name: "Add name here",
-      price: "0",
+      name: 'Add name here',
+      price: '0',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quasi amet vel aspernatur numquam corrupti! Quod fuga quaerat"
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quasi amet vel aspernatur numquam corrupti! Quod fuga quaerat'
     };
     this.props.addMenuItem(menuItem, this.props.activeMenu);
   };
@@ -50,7 +50,7 @@ class Menu extends React.Component {
             <button
               className="btn btn-light col-sm-6 d-flex align-items-center justify-content-center"
               onClick={this.createMenuItem}
-              style={{ minHeight: "125px", fontSize: "1.5rem" }}
+              style={{ minHeight: '125px', fontSize: '1.5rem' }}
             >
               <span>Add</span>
               <i className="fas fa-plus fa-3x p-2" />
