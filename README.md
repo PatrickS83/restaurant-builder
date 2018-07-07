@@ -1,6 +1,7 @@
 # Realtime Website Content Management
 
 A high-fidelity prototype of a realtime website content management system a collegue and me put together as a small side-project during vacation.
+It's a CMS that is extremely easy and quick to use. Ideal for small businesses that often need to make small changes to prices, menus etc. And no technical knowledge at all is required to make these changes!
 
 **Work-in-progress prototype**
 
